@@ -67,17 +67,17 @@ def create_time_periods(sender, instance, *args, **kwargs):
     rent_from = datetime.strptime(str(instance.rent_from), "%H:%M:%S")
     rent_to = datetime.strptime(str(instance.rent_to), "%H:%M:%S")
     while True:
-        PlaceReservePeriod.objects.create(
-            place=instance,
-            starting_time=rent_from,
-            finishing_time=rent_from + timedelta(minutes=instance.interval),
-        )
         if rent_from + timedelta(minutes=instance.interval) >= rent_to:
             f = rent_from + (rent_to - rent_from)
             PlaceReservePeriod.objects.create(
                 place=instance, starting_time=rent_from, finishing_time=f
             )
             break
+        PlaceReservePeriod.objects.create(
+            place=instance,
+            starting_time=rent_from,
+            finishing_time=rent_from + timedelta(minutes=instance.interval),
+        )
         rent_from = rent_from + timedelta(minutes=instance.interval)
 
 

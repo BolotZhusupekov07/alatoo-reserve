@@ -56,7 +56,7 @@ class MyReservesListView(APIView):
     date_input_serializer_class = DateInputSerializer
 
     def get(self, request):
-        reserves = services.get_my_reserves(user)
+        reserves = services.get_my_reserves(request.user)
         serializer = self.serializer_class(reserves, many=True)
         return Response(serializer.data)
 
@@ -66,7 +66,7 @@ class MyReservesListView(APIView):
         )
         if date_input_serializer.is_valid():
             date = date_input_serializer.data.get("date")
-            reserves = services.get_my_reserves(user, date)
+            reserves = services.get_my_reserves(request.user, date)
             serializer = self.serializer_class(reserves, many=True)
             return Response(serializer.data)
         return Response(

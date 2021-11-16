@@ -1,4 +1,4 @@
-from .models import Place, PlaceReservePeriod, Reserve
+from .models import Place, PlaceReservePeriod, Reserve, Category
 from datetime import datetime
 from django.utils import timezone
 from .serializers import PlaceSerializer

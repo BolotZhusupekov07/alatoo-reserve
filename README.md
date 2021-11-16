@@ -5,3 +5,5 @@
 [API](https://alatoo-room-booking.herokuapp.com/)
 
 [Admin panel](https://alatoo-room-booking.herokuapp.com/ru/admin/)
+Email: test@gmail.com
+Password: 123
